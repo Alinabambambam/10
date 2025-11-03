@@ -1,0 +1,54 @@
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        Laptop nl = new Laptop("Dell", 16, 85);
+        nl.PowerOn();
+        nl.Work();
+    }
+}
+
+internal class Device
+{
+    private string brand;
+
+    public string Brand
+        { get { return brand; } set { brand = value; } }
+    public Device(string brand) { this.Brand = brand; }
+    public void PowerOn() { Console.WriteLine($"{Brand} включен"); }
+
+}
+
+ internal class Laptop : Device
+ {
+     private int ram;
+     private int battery;
+
+     public int Ram
+     {
+         get { return ram; }
+         set
+         {
+             if (value < 1 || value > 64)
+                 Console.WriteLine("ошибка");
+             ram = value;
+         }
+     }
+     public int Battery
+     {
+         get { return battery; }
+         set
+         {
+             if (value < 0 || value > 100)
+             { Console.WriteLine("ошибка"); }
+             battery = value;
+         }
+     }
+
+     public Laptop(string brand, int ram, int battery): base(brand) 
+     {
+         this.Ram = ram;
+         this.Battery = battery;
+     }
+     public void Work() { Console.WriteLine($"Ноутбук {Brand}, ОЗУ: {ram} ГБ, заряд: {battery}%"); }
+ }
