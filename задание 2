@@ -1,0 +1,39 @@
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        Emplyee sotr1 = new Emplyee("Иван", 80000);
+        sotr1.Work();
+        Emplyee sotr2 = new Emplyee("Анна");
+        sotr2.Work();
+    }
+}
+
+    internal class Emplyee
+    {
+        private string name;
+        private decimal salary;
+
+        public string Name
+        { get { return name; }
+            set { name = value; }
+        }
+
+
+        public decimal Salary
+        { get { return salary; }
+            set
+            { if (value < 0 || value > 1000000)
+                { Console.WriteLine("ошибка"); }
+                salary = value;
+            }
+        }
+
+        public Emplyee(string name, decimal salary)
+        { this.Name = name; this.Salary = salary; }
+
+        public Emplyee(string name) { this.Name = name; this.Salary = 50_000; }
+        public void Work()
+        { Console.WriteLine($"{name} работает, зарплата: {salary}"); } 
+
+    }
