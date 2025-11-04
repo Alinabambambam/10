@@ -1,0 +1,39 @@
+internal class Program
+{
+    static void Main(string[] args)
+    {
+      Cat cat1 = new Cat("Мурзик");
+      Cat cat2 = new Cat("Барик", 8);
+
+        cat1.Speak();
+        cat2.Speak();
+        cat1.Meow();
+        cat2.Meow();
+    }
+}
+
+ internal class Animal
+ {
+     private string name;
+
+     public string Name { get { return name; } set { name = value; } }
+     public Animal(string name) { this.Name = name; }
+     public void Speak()
+     { Console.WriteLine($"{name} издает звук.");}
+ }
+
+   internal class Cat : Animal
+   {
+       private int lives;
+
+       public int Lives
+       {
+           get{ return lives; }
+           set{ if (lives < 0 || lives > 9) { Console.WriteLine("ошибка"); } lives = value; }
+       }
+
+       public Cat(string name, int lives) : base(name) { Lives = lives; }
+       public Cat(string name) : this(name, 9) { }
+       public void Meow()
+       { Console.WriteLine($"{Name } мяукнул, осталось жизней:{Lives}");}
+   }
