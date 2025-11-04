@@ -1,0 +1,27 @@
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        Point tochka1 = new Point(3.5, 7.2);
+        tochka1.Show();
+        Point tochka2 = new Point(5, 5);
+        tochka2.Show(); 
+        Point tochka3 = new Point(0,0);
+        tochka3.Show();
+    }
+}
+
+    internal class Point
+    {
+        private double x;
+        private double y;
+
+        public double X { get { return x; } set { x = value; } }
+        public double Y { get { return y; } set { y = value; } }
+
+        public Point(double x, double y)
+        { this.X = x; this.Y = y; }
+        public Point(double value) { this.X = Y =  value; }
+        public Point() { this.X = Y = 0; }
+         public void Show() { Console.WriteLine($"Точка:{x},{y}"); }
+    }
